@@ -42,7 +42,8 @@
                     Branches
                 </a>
 
-                <a href="#" class="block rounded-lg px-4 py-3 text-sm font-medium hover:bg-gray-800">
+                <a href="{{ route('tables') }}"
+                    class="block rounded-lg px-4 py-3 text-sm font-medium hover:bg-gray-800">
                     Tables
                 </a>
 

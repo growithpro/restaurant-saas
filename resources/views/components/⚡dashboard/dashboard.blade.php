@@ -1,4 +1,4 @@
-<x-layouts.app>
+
 
     <div class="min-h-screen bg-gray-50">
 
@@ -346,4 +346,3 @@
 
     </div>
 
-</x-layouts.app>
