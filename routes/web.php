@@ -23,3 +23,15 @@ Route::livewire('/branches', 'branches')
 Route::livewire('/tables', 'tables')
     ->middleware('auth')
     ->name('tables');
+
+Route::livewire('/categories', 'categories')
+    ->middleware('auth')
+    ->name('categories');
+
+Route::livewire('/menu-items', 'menu-items')
+    ->middleware('auth')
+    ->name('menu-items');
+
+Route::livewire('/register', 'auth.register')
+    ->middleware('guest')
+    ->name('register');

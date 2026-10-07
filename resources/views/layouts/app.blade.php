@@ -47,9 +47,20 @@
                     Tables
                 </a>
 
-                <a href="#" class="block rounded-lg px-4 py-3 text-sm font-medium hover:bg-gray-800">
-                    Menu
+
+                <a href="{{ route('categories') }}"
+                    class="block rounded-lg px-4 py-3 text-sm font-medium hover:bg-gray-800">
+                    Categories
                 </a>
+
+                <a href="{{ route('menu-items') }}"
+                    class="block rounded-lg px-4 py-3 text-sm font-medium hover:bg-gray-800">
+                    Menu Items
+                </a>
+
+                {{-- <a href="#" class="block rounded-lg px-4 py-3 text-sm font-medium hover:bg-gray-800">
+                    Menu
+                </a> --}}
 
                 <a href="#" class="block rounded-lg px-4 py-3 text-sm font-medium hover:bg-gray-800">
                     Orders

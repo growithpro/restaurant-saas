@@ -100,6 +100,17 @@
                 </button>
 
             </form>
+            <div class="mt-6 text-center">
+
+                <p class="text-sm text-gray-500">
+                    Don't have an account?
+
+                    <a href="{{ route('register') }}" class="font-semibold text-gray-900 hover:underline">
+                        Create restaurant account
+                    </a>
+                </p>
+
+            </div>
 
         </div>
 
