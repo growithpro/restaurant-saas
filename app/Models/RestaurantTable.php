@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class RestaurantTable extends Model
 {
@@ -33,5 +34,15 @@ class RestaurantTable extends Model
     public function floor(): BelongsTo
     {
         return $this->belongsTo(Floor::class);
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class, 'table_id');
+    }
+
+    public function kots(): HasMany
+    {
+        return $this->hasMany(Kot::class, 'table_id');
     }
 }

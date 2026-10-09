@@ -27,12 +27,17 @@ class Restaurant extends Model
     }
 
     public function categories(): HasMany
-{
-    return $this->hasMany(Category::class);
-}
+    {
+        return $this->hasMany(Category::class);
+    }
 
-public function menuItems(): HasMany
-{
-    return $this->hasMany(MenuItem::class);
-}
+    public function menuItems(): HasMany
+    {
+        return $this->hasMany(MenuItem::class);
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 }

@@ -2,11 +2,11 @@
 
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
-        {{-- HERO --}}
+        
         <div
             class="relative mb-6 overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 p-6 text-white shadow-xl sm:p-8">
 
-            {{-- Decorative circles --}}
+            
             <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10"></div>
             <div class="absolute -bottom-20 right-20 h-40 w-40 rounded-full bg-white/10"></div>
 
@@ -15,11 +15,12 @@
                 <div>
 
                     <p class="mb-2 text-sm font-medium text-white/75">
-                        {{ now()->format('l, d F Y') }}
+                        <?php echo e(now()->format('l, d F Y')); ?>
+
                     </p>
 
                     <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
-                        Welcome back, {{ Auth::user()->name }} 👋
+                        Welcome back, <?php echo e(Auth::user()->name); ?> 👋
                     </h1>
 
                     <p class="mt-2 max-w-xl text-sm leading-6 text-white/80 sm:text-base">
@@ -31,13 +32,13 @@
 
                 <div class="flex flex-wrap gap-3">
 
-                    <a href="{{ route('pos') }}" wire:navigate
+                    <a href="<?php echo e(route('pos')); ?>" wire:navigate
                         class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-indigo-700 shadow-lg transition hover:-translate-y-0.5 hover:bg-gray-50">
                         <span>🛒</span>
                         Open POS
                     </a>
 
-                    <a href="{{ route('orders') }}" wire:navigate
+                    <a href="<?php echo e(route('orders')); ?>" wire:navigate
                         class="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-5 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20">
                         <span>📋</span>
                         Orders
@@ -50,10 +51,10 @@
         </div>
 
 
-        {{-- MAIN STATS --}}
+        
         <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
 
-            {{-- Revenue --}}
+            
             <div class="rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm">
 
                 <div class="flex items-start justify-between">
@@ -64,7 +65,8 @@
                         </p>
 
                         <p class="mt-2 text-3xl font-bold text-gray-900">
-                            ₹{{ number_format($todayRevenue, 2) }}
+                            ₹<?php echo e(number_format($todayRevenue, 2)); ?>
+
                         </p>
 
                         <p class="mt-2 text-xs font-medium text-emerald-600">
@@ -81,7 +83,7 @@
             </div>
 
 
-            {{-- Orders --}}
+            
             <div class="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
 
                 <div class="flex items-start justify-between">
@@ -92,7 +94,8 @@
                         </p>
 
                         <p class="mt-2 text-3xl font-bold text-gray-900">
-                            {{ $todayOrderCount }}
+                            <?php echo e($todayOrderCount); ?>
+
                         </p>
 
                         <p class="mt-2 text-xs font-medium text-blue-600">
@@ -109,35 +112,11 @@
             </div>
 
 
-            {{-- Pending --}}
-            {{-- <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-sm">
-
-                <div class="flex items-start justify-between">
-
-                    <div>
-                        <p class="text-sm font-medium text-gray-500">
-                            Active Orders
-                        </p>
-
-                        <p class="mt-2 text-3xl font-bold text-gray-900">
-                            {{ $pendingOrders }}
-                        </p>
-
-                        <p class="mt-2 text-xs font-medium text-orange-600">
-                            ● Need attention
-                        </p>
-                    </div>
-
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-2xl">
-                        🔥
-                    </div>
-
-                </div>
-
-            </div> --}}
+            
+            
 
 
-            <a href="{{ route('orders') }}" wire:navigate
+            <a href="<?php echo e(route('orders')); ?>" wire:navigate
                 class="group block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg">
                 <div class="flex items-start justify-between">
 
@@ -147,8 +126,9 @@
                         </p>
 
                         <p
-                            class="mt-1 text-xs font-semibold {{ $pendingOrders > 0 ? 'text-orange-600' : 'text-emerald-600' }}">
-                            {{ $pendingOrders > 0 ? '● Need attention' : '✓ All clear' }}
+                            class="mt-1 text-xs font-semibold <?php echo e($pendingOrders > 0 ? 'text-orange-600' : 'text-emerald-600'); ?>">
+                            <?php echo e($pendingOrders > 0 ? '● Need attention' : '✓ All clear'); ?>
+
                         </p>
                     </div>
 
@@ -171,7 +151,7 @@
             </a>
 
 
-            {{-- Tables --}}
+            
             <div class="rounded-2xl border border-purple-100 bg-white p-5 shadow-sm">
 
                 <div class="flex items-start justify-between">
@@ -182,14 +162,16 @@
                         </p>
 
                         <p class="mt-2 text-3xl font-bold text-gray-900">
-                            {{ $occupiedTables }}
+                            <?php echo e($occupiedTables); ?>
+
                             <span class="text-lg font-medium text-gray-400">
-                                / {{ $tablesCount }}
+                                / <?php echo e($tablesCount); ?>
+
                             </span>
                         </p>
 
                         <p class="mt-2 text-xs font-medium text-purple-600">
-                            {{ $availableTables }} available
+                            <?php echo e($availableTables); ?> available
                         </p>
                     </div>
 
@@ -204,7 +186,7 @@
         </div>
 
 
-        {{-- QUICK ACTIONS --}}
+        
         <div class="mb-6">
 
             <div class="mb-4 flex items-center justify-between">
@@ -224,7 +206,7 @@
 
             <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
 
-                <a href="{{ route('pos') }}" wire:navigate
+                <a href="<?php echo e(route('pos')); ?>" wire:navigate
                     class="group rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-700 p-5 text-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
 
                     <div class="text-3xl">
@@ -242,7 +224,7 @@
                 </a>
 
 
-                <a href="{{ route('menu-items') }}" wire:navigate
+                <a href="<?php echo e(route('menu-items')); ?>" wire:navigate
                     class="group rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-700 p-5 text-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
 
                     <div class="text-3xl">
@@ -260,7 +242,7 @@
                 </a>
 
 
-                <a href="{{ route('tables') }}" wire:navigate
+                <a href="<?php echo e(route('tables')); ?>" wire:navigate
                     class="group rounded-2xl bg-gradient-to-br from-orange-500 to-orange-700 p-5 text-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
 
                     <div class="text-3xl">
@@ -278,7 +260,7 @@
                 </a>
 
 
-                <a href="{{ route('orders') }}" wire:navigate
+                <a href="<?php echo e(route('orders')); ?>" wire:navigate
                     class="group rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 p-5 text-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
 
                     <div class="text-3xl">
@@ -300,11 +282,11 @@
         </div>
 
 
-        {{-- LOWER GRID --}}
+        
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
 
 
-            {{-- RECENT ORDERS --}}
+            
             <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm lg:col-span-2">
 
                 <div class="flex items-center justify-between border-b border-gray-100 px-5 py-4">
@@ -319,7 +301,7 @@
                         </p>
                     </div>
 
-                    <a href="{{ route('orders') }}" wire:navigate
+                    <a href="<?php echo e(route('orders')); ?>" wire:navigate
                         class="text-sm font-semibold text-indigo-600 hover:text-indigo-700">
                         View all →
                     </a>
@@ -329,7 +311,7 @@
 
                 <div class="divide-y divide-gray-100">
 
-                    @forelse ($recentOrders as $order)
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__empty_1 = true; $__currentLoopData = $recentOrders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
 
                         <div class="flex items-center justify-between gap-4 px-5 py-4 hover:bg-gray-50">
 
@@ -343,18 +325,21 @@
                                 <div class="min-w-0">
 
                                     <p class="truncate font-semibold text-gray-900">
-                                        {{ $order->order_number }}
+                                        <?php echo e($order->order_number); ?>
+
                                     </p>
 
                                     <p class="mt-1 truncate text-xs text-gray-500">
 
-                                        {{ $order->branch?->name }}
+                                        <?php echo e($order->branch?->name); ?>
 
-                                        @if ($order->table)
-                                            · Table {{ $order->table->name }}
-                                        @else
+
+                                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($order->table): ?>
+                                            · Table <?php echo e($order->table->name); ?>
+
+                                        <?php else: ?>
                                             · Takeaway
-                                        @endif
+                                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
                                     </p>
 
@@ -366,10 +351,11 @@
                             <div class="shrink-0 text-right">
 
                                 <p class="font-bold text-gray-900">
-                                    ₹{{ number_format($order->grand_total, 2) }}
+                                    ₹<?php echo e(number_format($order->grand_total, 2)); ?>
+
                                 </p>
 
-                                @php
+                                <?php
                                     $statusClasses = match ($order->status) {
                                         'pending' => 'bg-yellow-100 text-yellow-700',
                                         'preparing' => 'bg-blue-100 text-blue-700',
@@ -379,18 +365,19 @@
                                         'cancelled' => 'bg-red-100 text-red-700',
                                         default => 'bg-gray-100 text-gray-700',
                                     };
-                                @endphp
+                                ?>
 
                                 <span
-                                    class="mt-1 inline-flex rounded-full px-2 py-1 text-[10px] font-bold uppercase {{ $statusClasses }}">
-                                    {{ $order->status }}
+                                    class="mt-1 inline-flex rounded-full px-2 py-1 text-[10px] font-bold uppercase <?php echo e($statusClasses); ?>">
+                                    <?php echo e($order->status); ?>
+
                                 </span>
 
                             </div>
 
                         </div>
 
-                    @empty
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
 
                         <div class="px-5 py-12 text-center">
 
@@ -406,21 +393,21 @@
                                 Your recent orders will appear here.
                             </p>
 
-                            <a href="{{ route('pos') }}" wire:navigate
+                            <a href="<?php echo e(route('pos')); ?>" wire:navigate
                                 class="mt-4 inline-flex rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white">
                                 Create First Order
                             </a>
 
                         </div>
 
-                    @endforelse
+                    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
                 </div>
 
             </div>
 
 
-            {{-- RESTAURANT OVERVIEW --}}
+            
             <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
 
                 <div class="mb-5">
@@ -438,8 +425,8 @@
 
                 <div class="space-y-3">
 
-                    {{-- Branches --}}
-                    <a href="{{ route('branches') }}" wire:navigate
+                    
+                    <a href="<?php echo e(route('branches')); ?>" wire:navigate
                         class="flex items-center justify-between rounded-xl bg-blue-50 p-4 transition hover:bg-blue-100">
 
                         <div class="flex items-center gap-3">
@@ -463,14 +450,15 @@
                         </div>
 
                         <span class="text-xl font-bold text-blue-700">
-                            {{ $branchesCount }}
+                            <?php echo e($branchesCount); ?>
+
                         </span>
 
                     </a>
 
 
-                    {{-- Tables --}}
-                    <a href="{{ route('tables') }}" wire:navigate
+                    
+                    <a href="<?php echo e(route('tables')); ?>" wire:navigate
                         class="flex items-center justify-between rounded-xl bg-orange-50 p-4 transition hover:bg-orange-100">
 
                         <div class="flex items-center gap-3">
@@ -486,7 +474,7 @@
                                 </p>
 
                                 <p class="text-xs text-gray-500">
-                                    {{ $occupiedTables }} occupied
+                                    <?php echo e($occupiedTables); ?> occupied
                                 </p>
 
                             </div>
@@ -494,14 +482,15 @@
                         </div>
 
                         <span class="text-xl font-bold text-orange-700">
-                            {{ $tablesCount }}
+                            <?php echo e($tablesCount); ?>
+
                         </span>
 
                     </a>
 
 
-                    {{-- Categories --}}
-                    <a href="{{ route('categories') }}" wire:navigate
+                    
+                    <a href="<?php echo e(route('categories')); ?>" wire:navigate
                         class="flex items-center justify-between rounded-xl bg-purple-50 p-4 transition hover:bg-purple-100">
 
                         <div class="flex items-center gap-3">
@@ -525,14 +514,15 @@
                         </div>
 
                         <span class="text-xl font-bold text-purple-700">
-                            {{ $categoriesCount }}
+                            <?php echo e($categoriesCount); ?>
+
                         </span>
 
                     </a>
 
 
-                    {{-- Menu --}}
-                    <a href="{{ route('menu-items') }}" wire:navigate
+                    
+                    <a href="<?php echo e(route('menu-items')); ?>" wire:navigate
                         class="flex items-center justify-between rounded-xl bg-emerald-50 p-4 transition hover:bg-emerald-100">
 
                         <div class="flex items-center gap-3">
@@ -548,7 +538,7 @@
                                 </p>
 
                                 <p class="text-xs text-gray-500">
-                                    {{ $availableMenuItems }} available
+                                    <?php echo e($availableMenuItems); ?> available
                                 </p>
 
                             </div>
@@ -556,7 +546,8 @@
                         </div>
 
                         <span class="text-xl font-bold text-emerald-700">
-                            {{ $menuItemsCount }}
+                            <?php echo e($menuItemsCount); ?>
+
                         </span>
 
                     </a>
@@ -568,7 +559,7 @@
         </div>
 
 
-        {{-- POPULAR MENU --}}
+        
         <div class="mt-6 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
 
             <div class="mb-5">
@@ -586,7 +577,7 @@
 
             <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
 
-                @forelse ($popularItems as $item)
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__empty_1 = true; $__currentLoopData = $popularItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoopIteration(); ?><?php endif; ?>
 
                     <div class="rounded-xl border border-gray-100 bg-gray-50 p-4">
 
@@ -597,13 +588,15 @@
                             </div>
 
                             <span class="rounded-full bg-indigo-100 px-2 py-1 text-[10px] font-bold text-indigo-700">
-                                #{{ $loop->iteration }}
+                                #<?php echo e($loop->iteration); ?>
+
                             </span>
 
                         </div>
 
                         <p class="mt-4 truncate font-semibold text-gray-900">
-                            {{ $item->name }}
+                            <?php echo e($item->name); ?>
+
                         </p>
 
                         <div class="mt-2 flex items-center justify-between">
@@ -613,14 +606,15 @@
                             </span>
 
                             <span class="text-sm font-bold text-gray-900">
-                                {{ $item->sold_quantity }}
+                                <?php echo e($item->sold_quantity); ?>
+
                             </span>
 
                         </div>
 
                     </div>
 
-                @empty
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
 
                     <div class="col-span-full rounded-xl bg-gray-50 p-8 text-center">
 
@@ -630,14 +624,14 @@
 
                     </div>
 
-                @endforelse
+                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
             </div>
 
         </div>
 
 
-        {{-- SYSTEM STATUS --}}
+        
         <div
             class="mt-6 flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between">
 
@@ -667,4 +661,4 @@
 
     </div>
 
-</div>
+</div><?php /**PATH D:\ITDA\restaurant-saas\storage\framework\views/livewire/views/52021f0a.blade.php ENDPATH**/ ?>
